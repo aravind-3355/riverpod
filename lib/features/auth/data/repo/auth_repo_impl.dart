@@ -25,7 +25,7 @@ class AuthRepositoryImpl extends AuthRepository {
     } on SocketException {
       return const Left(ConnectionFailure(msg: 'No internet connection'));
     } on DioException catch (e) {
-      log('error${e.response!.data}');
+      log('error${e.response?.data}');
       return Left(
         ServerFailure(
           msg: e.response?.data['message'].toString() ??
